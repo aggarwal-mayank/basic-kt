@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+    - name: gradle
+      image: gradle:6.7-jdk11
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "256Mi"
+        limits:
+          cpu: "500m"
+          memory: "1Gi"  
+      command:
+        - sleep
+      args:
+        - 99d
