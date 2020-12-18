@@ -33,7 +33,7 @@ pipeline {
             steps {
                 container('gradle') {
                     sh 'pwd'
-                    sh 'gradle --stacktrace jib -Djib.to.image=gcr.io/practicek8s/basic-kt:${System.nanoTime()} -Djib.to.auth.username=$GCP_SA_USR -Djib.to.auth.password=$GCP_SA_PSW'
+                    sh 'gradle --stacktrace jib -Djib.to.image=gcr.io/practicek8s/basic-kt:latest -Djib.to.auth.username=$GCP_SA_USR -Djib.to.auth.password=$GCP_SA_PSW'
                     sh 'ls -alh'
                 }
             }
