@@ -33,7 +33,7 @@ pipeline {
             steps {
                 container('gradle') {
                     sh 'gradle task --all'
-                    sh 'gradle jib'
+                    sh 'gradle --stacktrace jib --image=gcr.io/practicek8s/basic-kt:latest'
                     //sh 'gradle --stacktrace jib -Djib.to.image=gcr.io/practicek8s/basic-kt:latest -Djib.to.auth.username=$GCP_SA_USR -Djib.to.auth.password=$GCP_SA_PSW'
                     sh 'ls -alh'
                 }
