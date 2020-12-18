@@ -5,6 +5,9 @@ pipeline {
             yamlFile 'jenkins-pod.yaml'
         }
     }
+    environment {
+        GCP_SA = credentials('gcp-sa')
+    }
     stages {
         stage('Test') {
             steps {
@@ -26,13 +29,11 @@ pipeline {
             }
         }
 
-        stage('Global') {
+        stage('Publish') {
             steps {
-                script {
-                    foo.info('World!!')
-                }
                 container('gradle') {
                     sh 'pwd'
+                    sh 'gradle jib -Djib.to.image=gcr.io/practicek8s/basic-kt:latest -Djib.to.auth.username=$GCP_SA_USR -Djib.to.auth.password=$GCP_SA_PSW'
                     sh 'ls -alh'
                 }
             }

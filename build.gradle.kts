@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.spring") version "1.4.21"
     kotlin("plugin.jpa") version "1.4.21"
+    id("com.google.cloud.tools.jib") version "2.7.0"
 }
 
 group = "org.appcode"
@@ -47,3 +48,14 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+//val jib =  tasks.named("jib")
+//jib {
+//    to {
+//        image = "gcr.io/practicek8s/basic-kt:" + System.nanoTime()
+//        auth {
+//            username = "_json_key"
+//            password = file("keyfile.json").readText()
+//        }
+//    }
+//}
