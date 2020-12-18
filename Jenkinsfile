@@ -32,8 +32,8 @@ pipeline {
         stage('Publish') {
             steps {
                 container('gradle') {
-                    sh 'pwd'
-                    sh './gradlew --stacktrace jib -Djib.to.image=gcr.io/practicek8s/basic-kt:latest -Djib.to.auth.username=$GCP_SA_USR -Djib.to.auth.password=$GCP_SA_PSW'
+                    sh 'gradle task --all'
+                    sh 'gradle --stacktrace jib -Djib.to.image=gcr.io/practicek8s/basic-kt:latest -Djib.to.auth.username=$GCP_SA_USR -Djib.to.auth.password=$GCP_SA_PSW'
                     sh 'ls -alh'
                 }
             }
