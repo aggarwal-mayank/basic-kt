@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        GCP_SA = credentials('gcp-sa')
+        GCR_PASS= credentials('gcrPass')
     }
     stages {
         // stage('Test') {
@@ -34,7 +34,7 @@ pipeline {
                 container('gradle') {
                     sh 'gradle task --all'
                     //sh 'gradle --stacktrace jib --image=gcr.io/practicek8s/basic-kt:latest'
-                    sh "gradle --stacktrace jib -Djib.to.image=gcr.io/practicek8s/basic-kt:latest -Djib.to.auth.username='$GCP_SA_USR' -Djib.to.auth.password='$GCP_SA_PSW'"
+                    sh 'gradle jib -PgcrUser='_json_key' -PgcrPass=$GCR_PASS'
                     sh 'ls -alh'
                 }
             }

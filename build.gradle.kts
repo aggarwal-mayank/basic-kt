@@ -49,13 +49,15 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-//val jib =  tasks.named("jib")
-//jib {
-//    to {
-//        image = "gcr.io/practicek8s/basic-kt:" + System.nanoTime()
-//        auth {
-//            username = "_json_key"
-//            password = file("keyfile.json").readText()
-//        }
-//    }
-//}
+val jib =  tasks.named("jib")
+val gcrUser: String by project
+val gcrPass: String by project
+jib {
+    to {
+        image = "gcr.io/practicek8s/basic-kt:" + System.nanoTime()
+        auth {
+            username = gcrUser
+            password = gcrPass
+        }
+    }
+}
