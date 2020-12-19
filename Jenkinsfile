@@ -34,7 +34,7 @@ pipeline {
                 container('gradle') {
                     sh 'gradle task --all'
                     //sh 'gradle --stacktrace jib --image=gcr.io/practicek8s/basic-kt:latest'
-                    sh 'gradle jib -PgcrUser='_json_key' -PgcrPass=$GCR_PASS'
+                    sh 'gradle jib -PgcrUser=_json_key -PgcrPass=$GCR_PASS'
                     sh 'ls -alh'
                 }
             }
