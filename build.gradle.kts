@@ -50,14 +50,14 @@ tasks.withType<Test> {
 }
 
 val jib =  tasks.named("jib")
-val gcrUser: String by project
-val gcrPass: String by project
-jib {
-    to {
-        image = "gcr.io/practicek8s/basic-kt:" + System.nanoTime()
-        auth {
-            username = gcrUser
-            password = gcrPass
-        }
-    }
-}
+//val gcrUser: String by project
+//val gcrPass: String by project
+//jib {
+//    to {
+//        image = "gcr.io/practicek8s/basic-kt:" + System.nanoTime()
+//        auth {
+//            username = gcrUser
+//            password = gcrPass
+//        }
+//    }
+//}
